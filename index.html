@@ -6,6 +6,7 @@
 <title>Love Letter</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
+
   body {
     display:flex;
     justify-content:center;
@@ -14,11 +15,12 @@
     background:#ffe6f0;
     font-family:Arial, sans-serif;
     overflow:hidden;
+    padding: 10px;
   }
 
   h2 {
     color:#ff4d94;
-    font-size:1.8rem;
+    font-size:1.5rem;
     text-align:center;
     margin-bottom:20px;
     transition:opacity 0.5s ease;
@@ -26,8 +28,10 @@
 
   .envelope-container {
     position:relative;
-    width:300px;
-    height:200px;
+    width:80vw;
+    max-width:300px;
+    height:50vw;
+    max-height:200px;
     cursor:pointer;
   }
 
@@ -68,22 +72,22 @@
     bottom:-220px; /* hidden initially */
     left:50%;
     transform:translateX(-50%) scale(0.5);
-    width:280px;
-    background:#fff0f5;
+    width:80vw;
+    max-width:280px;
+    background:rgba(255,240,245,0.95);
     border-radius:12px;
     padding:20px;
     color:#ff1a75;
     text-align:center;
-    font-size:1.2rem;
+    font-size:1rem;
     box-shadow:0 5px 15px rgba(0,0,0,0.2);
     transition:all 0.8s ease;
     z-index:1;
     visibility: hidden;
     background-image: url('https://i.postimg.cc/3wVxFq6V/flower-pattern.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .letter.show {
@@ -93,8 +97,10 @@
   }
 
   .sticker {
-    width:50px;
-    height:50px;
+    width:15vw;
+    max-width:50px;
+    height:15vw;
+    max-height:50px;
     background-image:url("https://www.freepnglogos.com/uploads/heart-png/emoji-heart-33.png");
     background-size:cover;
     position:absolute;
@@ -103,6 +109,12 @@
     transform:translate(-50%,-50%);
     cursor:pointer;
     z-index:3;
+  }
+
+  /* Mobile font adjustments */
+  @media (max-width: 400px){
+    h2 { font-size:1.2rem; }
+    .letter { font-size:0.9rem; padding:15px; }
   }
 
 </style>
@@ -117,7 +129,7 @@
   </div>
   <div class="sticker" id="sticker"></div>
   <div class="letter" id="letter">
-  ❤️ Hi love, I just want to say thank you for all the beautiful moments we shared. please know that you will always have a special place in my heart. I will cherish our memories forever and wish you nothing but happiness. Take care and keep smiling. I love you. ❤️
+  ❤️ Hi love, I just want to say thank you for all the beautiful moments we shared. Please know that you will always have a special place in my heart. I will cherish our memories forever and wish you nothing but happiness. Take care and keep smiling. I love you. ❤️
   </div>
 </div>
 
@@ -128,14 +140,12 @@
   const instruction = document.getElementById('instruction');
 
   sticker.addEventListener('click', () => {
-    // Hide envelope
     envelope.classList.add('open');
     sticker.style.opacity = '0';
     instruction.style.opacity = '0';
-    // Show letter
     setTimeout(() => {
       letter.classList.add('show');
-    }, 600); // after envelope fades
+    }, 600);
   });
 </script>
 
